@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHILOH SNEHA SECURITY SERVICES PRIVATE LIMITED.</title>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #home {
+      background-color: #eef4f7;
+      padding: 30px;
+    }
+
+    .home-section {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .slider-container {
+      width: 45%;
+      min-width: 300px;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #003366;
+    }
+
+    .vision-mission {
+      width: 50%;
+      min-width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .vision-mission h2 {
+      color: #003366;
+      margin-top: 20px;
+    }
+
+    .vision-mission p {
+      margin-bottom: 20px;
+    }
+
+    .home-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .home-button button {
+      padding: 12px 24px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .home-button button:hover {
+      background-color: #005599;
+    }
+
+    #contact {
+      padding: 50px;
+      text-align: center;
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="home-section">
+      
+      <!-- Image Slider (Left Side) -->
+      <div class="slider-container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="security.jpeg" alt="Security Image 1"></div>
+            <div class="swiper-slide"><img src="sec2.jpg" alt="Security Image 2"></div>
+            <div class="swiper-slide"><img src="sec3.jpg" alt="Security Image 3"></div>
+          </div>
+
+          <!-- Navigation Arrows -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+
+      <!-- Vision & Mission (Right Side) -->
+      <div class="vision-mission">
+        <h2>Vision</h2>
+        <p>To create a safer and more secure society by empowering the youth through skill development, security training, and meaningful employment opportunities in the security and Surveillance sectors.</p>
+
+        <h2>Mission</h2>
+        <p>Our mission is to bridge the gap between unemployment and career growth by providing comprehensive security training, skill development, and certification to young individuals, enabling them to secure stable jobs in security services, Hospitals, Shopping Malls and PSOs to Individual Citizens. Contributing to national safety and community well-being.</p>
+      </div>
+    </div>
+
+    <div class="home-button">
+      <button onclick="document.getElementById('contact').scrollIntoView()">Start Your Journey</button>
+    </div>
+  </section>
+
+  <!-- Dummy Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>This is a dummy section for the scroll button.</p>
+  </section>
+
+  <!-- Swiper JS + Custom Script -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
+  </script>
+</body>
+</html>

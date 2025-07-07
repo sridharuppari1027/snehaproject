@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHILOH SNEHA SECURITY SERVICES PRIVATE LIMITED.</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .grid,
+    .goals-grid,
+    .clients-grid,
+    .contact-container {
+      display: grid;
+      gap: 30px;
+    }
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .goals-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .clients-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      justify-items: center;
+      align-items: center;
+    }
+    .contact-container {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card,
+    .client-logo {
+      background: #f4f9ff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .card:hover,
+    .client-logo:hover {
+      background-color: #e0f0ff;
+      transform: scale(1.02);
+      border-color: #007799;
+    }
+    .card .icon,
+    .client-logo img {
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: #007799;
+      max-width: 100%;
+      height: auto;
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      color: #003355;
+    }
+    .card ul {
+      padding-left: 20px;
+      list-style: disc;
+    }
+    .card ul li {
+      font-size: 0.95em;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 0.95em;
+    }
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+    button[type="submit"] {
+      background-color: #007799;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #005f73;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      border-radius: 8px;
+    }
+    .client-logo {
+      width: 100%;
+      max-width: 180px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    footer {
+      background: #002244;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+    /* Responsive Navbar */
+    .navbar-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .navbar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        background-color: #003060;
+      }
+      .navbar ul.show {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+    }
+
+    /* Header specific styles */
+    .header {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('header-bg.jpg') no-repeat center center/cover; /* Placeholder for background image if needed */
+      padding: 20px 0;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-overlay {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-left img {
+      height: 80px; /* Adjust as needed */
+    }
+
+    .header-center h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    .header-center p {
+      margin: 5px 0 0;
+      font-size: 1.1em;
+    }
+
+    .header-right {
+        /* This div is currently empty, consider removing if not used or adding content */
+        width: 80px; /* To balance header-left if logo is 80px */
+    }
+
+    /* Navbar general styles */
+    .navbar {
+      background-color: #003366;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .navbar ul li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+      color: #ffd700; /* Gold color on hover */
+    }
+
+    /* Slider specific styles */
+    .fullscreen-slider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slider img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .slider img {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slider img {
+        height: 200px;
+      }
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Vision + Mission Section styles */
+    .vision-mission-box {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px;
+      background-color: #eef4f7;
+      flex-wrap: wrap;
+    }
+
+    .vision-mission-box .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      flex: 1;
+      min-width: 300px;
+      max-width: 48%;
+    }
+
+    @media (max-width: 768px) {
+      .vision-mission-box .card {
+        max-width: 100%;
+      }
+    }
+
+    .vision-mission-box h2 {
+      color: #003366;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .vision-mission-box p {
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* General button style (used for "Start Your Journey") */
+    .start-journey-button {
+      text-align: center;
+      margin: 30px;
+    }
+
+    .start-journey-button button {
+      padding: 10px 20px;
+      border: none;
+      background: #007799;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .start-journey-button button:hover {
+      background-color: #005599;
+    }
+
+    /* Contact section (as referenced in the button) */
+    #contact {
+      padding: 50px;
+      text-align: center;
+      background-color: #ddd;
+    }
+
+    /* Styles for general grids (training, model, process) */
+    #training .grid,
+    #ourmodels .grid,
+    #model .grid,
+    #process .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      #training .grid,
+      #ourmodels .grid,
+      #model .grid,
+      #process .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      #training .grid,
+      #ourmodels .grid,
+      #model .grid,
+      #process .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Specific styles for goals-grid */
+    .goals-grid {
+      grid-template-columns: repeat(2, 1fr); /* Corrected missing semicolon */
+    }
+
+    @media (max-width: 768px) {
+      .goals-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Specific styles for clients-grid */
+    .clients-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .clients-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Footer specific styles */
+    footer {
+      background-color: #5A808F;
+      color: #ffffff;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      color: #ffffff;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-overlay">
+      <div class="header-left">
+        <img src="sneha logo.png" alt="Company Logo">
+      </div>
+      <div class="header-center">
+        <h1>SHILOH SNEHA SECURITY SERVICES PRIVATE LIMITED</h1>
+        <p>Empowering the Next Generation of Security Professionals</p>
+      </div>
+      <div class="header-right">
+        </div>
+    </div>
+  </header>
+  <nav class="navbar">
+    <button class="navbar-toggle" onclick="document.querySelector('.navbar ul').classList.toggle('show')">
+      ☰
+    </button>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#aboutus">About Us</a></li>
+      <li><a href="#training">Training</a></li>
+      <li><a href="#model">Model</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" style="padding: 0; margin: 0;">
+    <div class="fullscreen-slider">
+      <div class="slider">
+        <img src="secu2.jpg" alt="Training 1">
+        <img src="sec3.jpg" alt="Training 2">
+        <img src="sec2.jpg" alt="Training 3">
+      </div>
+      <button class="prev" onclick="plusSlides(-1)">❮</button>
+      <button class="next" onclick="plusSlides(1)">❯</button>
+    </div>
+
+    <div class="vision-mission-box">
+      <div class="card">
+        <h2>Vision</h2>
+        <p>
+          To create a safer and more secure society by empowering the youth through skill development, security training, and meaningful employment opportunities in the security and surveillance sectors.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Mission</h2>
+        <p>
+          Our mission is to bridge the gap between unemployment and career growth by providing comprehensive security training, skill development, and certification to young individuals, enabling them to secure stable jobs in security services, hospitals, shopping malls, and PSO roles — contributing to national safety and community well-being.
+        </p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin: 30px;">
+      <button onclick="document.getElementById('contact').scrollIntoView()" style="padding: 10px 20px; border: none; background: #007799; color: #fff; border-radius: 8px; cursor: pointer;">
+        Start Your Journey
+      </button>
+    </div>
+  </section>
+
+  <section id="aboutus" style="padding: 40px 20px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; background: #eef; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 30px;">
+      <div style="flex: 1 1 300px; text-align: center; padding: 10px;">
+        <img src="sec2.jpg" alt="About Us" style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+      </div>
+
+      <div style="flex: 1 1 400px; padding: 20px;">
+        <h2>About Us</h2>
+        <p style="font-size: 1.1em;">
+          At Shiloh Sneha Security Services Private Limited, we are committed to safeguarding what matters most. Founded in April 2025 and headquartered in Guntur, Andhra Pradesh, our company was built on the principles of trust, vigilance, and professionalism. We specialize in comprehensive security and investigation services, offering tailored solutions to meet the evolving needs of residential, commercial, and institutional clients.Led by directors Sneha Latha Ashok Mathangi and Kavya Preethi Mathangi, our team brings a proactive approach to security management, combining modern surveillance techniques with a deep understanding of local safety dynamics. Whether it’s manned guarding, event security, or risk assessment, we deliver peace of mind through precision and integrity.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section id="training" style="padding: 40px 20px;">
+    <div style="background: burlywood; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <h2 style="text-align: center; color: #002244;">Training Infrastructure</h2>
+      <p style="text-align: center; max-width: 800px; margin: 10px auto 30px; color: #444;">
+        Our infrastructure is designed to empower individuals with knowledge, experience, and physical readiness to thrive in the security sector.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🖥️</div>
+          <h3>Digital Classrooms</h3>
+          <ul>
+            <li>Smart boards with real-time interaction</li>
+            <li>HD projectors and virtual modules</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧪</div>
+          <h3>Simulation Labs</h3>
+          <ul>
+            <li>Live drill practices for emergency response</li>
+            <li>Roleplay-based learning setups</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏛️</div>
+          <h3>Learning Halls</h3>
+          <ul>
+            <li>Large capacity seating with AV systems</li>
+            <li>Guest lectures & interactive workshops</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏋️‍♂️</div>
+          <h3>Fitness Arenas</h3>
+          <ul>
+            <li>Indoor gym and outdoor tracks</li>
+            <li>Daily physical training & endurance tests</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🍽️</div>
+          <h3>Residence & Amenities</h3>
+          <ul>
+            <li>Hostels with mess, lounges & recreation</li>
+            <li>24/7 security and hygiene management</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🦺</div>
+          <h3>Safety Equipment</h3>
+          <ul>
+            <li>Fire extinguishers, safety gear</li>
+            <li>Uniform kits and protective wear</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ourmodels" style="padding: 40px 20px;">
+    <div style="background: #ffffff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <h2 style="text-align: center; color: #002244;">Our Models</h2>
+      <p style="text-align: center; max-width: 800px; margin: 10px auto 30px; color: #444;">
+        Explore our operational deployment strategies designed to meet a wide range of security needs.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🚓</div>
+          <h3>Patrol Model</h3>
+          <ul>
+            <li>Mobile patrol units in high-risk zones</li>
+            <li>Quick-response force for emergencies</li>
+            <li>Reporting and alert systems integrated</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3>Escort Model</h3>
+          <ul>
+            <li>Security escort for VIPs and executives</li>
+            <li>Secure transportation of assets</li>
+            <li>Highly trained, licensed personnel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="model" style="padding: 40px 20px;">
+    <div style="background: #ffffff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <h2 style="text-align: center; color: #002244;">The Sneha Approach</h2>
+      <p style="text-align: center; max-width: 800px; margin: 10px auto 30px; color: #444;">
+        Our approach is focused on building skilled manpower and deploying them strategically in the security sector.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>Human Capital Building</h3>
+          <ul>
+            <li>Identify and enroll motivated youth</li>
+            <li>Focus on inclusive and gender-balanced outreach</li>
+            <li>Screening and profiling for role alignment</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">📘</div>
+          <h3>Comprehensive Skill Training</h3>
+          <ul>
+            <li>Modern training curriculum with practical modules</li>
+            <li>Soft skills, emergency response & communication</li>
+            <li>Certified instructors & digital tools</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>Workforce Deployment</h3>
+          <ul>
+            <li>Placement across hospitals, malls & PSOs</li>
+            <li>Real-time job mapping and onboarding</li>
+            <li>Continuous mentorship and career tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="padding: 40px 20px;">
+    <div style="background: #ffffff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <h2 style="text-align: center; color: #002244;">Our Process</h2>
+      <p style="text-align: center; max-width: 800px; margin: 10px auto 30px; color: #444;">
+        A 6-step approach to skill development and career placement.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>Targeted Youth Enrollment</h3>
+          <ul>
+            <li>Identify job-seeking youth across regions</li>
+            <li>Community outreach and counseling</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">📚</div>
+          <h3>Comprehensive Curriculum</h3>
+          <ul>
+            <li>Theory + practical training modules</li>
+            <li>Soft skills & discipline-based learning</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛠️</div>
+          <h3>Hands-on Practice</h3>
+          <ul>
+            <li>Live scenarios, drills, and exercises</li>
+            <li>Equipment handling & real-world simulations</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">📋</div>
+          <h3>Evaluation & Certification</h3>
+          <ul>
+            <li>Performance reviews and tests</li>
+            <li>Industry-recognized certifications</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>Job Mapping</h3>
+          <ul>
+            <li>Link candidates with employers</li>
+            <li>Vacancy tracking and placement support</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Ongoing Mentorship</h3>
+          <ul>
+            <li>Post-placement support</li>
+            <li>Mentorship and career progression tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ourservices" style="padding: 40px 20px;">
+    <div style="background: #ffffff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <h2 style="text-align: center; color: #002244;">Our Goals and Impacts</h2>
+      <p style="text-align: center; max-width: 800px; margin: 10px auto 30px; color: #444;">
+        Creating scalable impact through widespread identification, targeted training, and career placement for youth.
+      </p>
+
+      <div class="goals-grid">
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>18.48 Lakh Youth Identified</h3>
+          <ul>
+            <li>Mass outreach across Andhra Pradesh</li>
+            <li>Focus on employability & awareness</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>1.8 Lakh Targeted for Training</h3>
+          <ul>
+            <li>Selection based on eligibility & interest</li>
+            <li>Skill development across core domains</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏆</div>
+          <h3>100% Placement Goal</h3>
+          <ul>
+            <li>Committed to job linkage post-training</li>
+            <li>Corporate and institutional tie-ups</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">📆</div>
+          <h3>30+ Years Experience</h3>
+          <ul>
+            <li>Led by experienced professionals</li>
+            <li>Strong foundation in security services</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="clients" style="padding: 40px 20px;">
+    <div style="background: #ffffff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <h2 style="text-align: center; color: #002244;">Our Clients</h2>
+      <p style="text-align: center; color: #444; margin-bottom: 30px;">
+        Trusted partners.
+      </p>
+
+      <div class="clients-grid">
+        <div class="client-logo">
+          <img src="apollologo.png" alt="Apollo Hospitals">
+        </div>
+        <div class="client-logo">
+          <img src="kimslogo.png" alt="KIMS Hospitals">
+        </div>
+        <div class="client-logo">
+          <img src="accentuelogo.png" alt="Accenture">
+        </div>
+        <div class="client-logo">
+          <img src="capgemini logo.png" alt="Capgemini">
+        </div>
+        <div class="client-logo">
+          <img src="nexusmalllogo.png" alt="Nexus Mall">
+        </div>
+        <div class="client-logo">
+          <img src="sattvamalllogo.png" alt="Satva Mall">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding: 40px 20px;">
+    <div style="background: #ffffff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <h2 style="text-align: center; color: #002244;">Contact Us</h2>
+
+      <div class="contact-container" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: stretch;">
+        <div style="flex: 1 1 400px; display: flex; flex-direction: column; justify-content: center;">
+          <form style="margin-top: 20px;">
+            <h3 style="margin-bottom: 20px; color: #002244;">Get in Touch With Us</h3>
+            <div class="form-group" style="margin-bottom: 15px;"><input type="text" placeholder="Name" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></div>
+            <div class="form-group" style="margin-bottom: 15px;"><input type="email" placeholder="Email" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></div>
+            <div class="form-group" style="margin-bottom: 15px;"><input type="tel" placeholder="Phone" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></div>
+            <div class="form-group" style="margin-bottom: 15px;"><input type="text" placeholder="Subject" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></div>
+            <div class="form-group" style="margin-bottom: 15px;"><textarea placeholder="Message" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; height: 100px;"></textarea></div>
+            <button type="submit" style="background-color: #007799; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer;">Submit</button>
+          </form>
+        </div>
+
+        <div class="map-container" style="flex: 1 1 400px; min-height: 300px; display: flex; align-items: center;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.97495914582!2d80.4578130749005!3d16.326242531309854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a7541f5310651%3A0x6b7b2a9d8c3e800!2sGuntur%2C%20Andhra%20Pradesh%20522002!5e0!3m2!1sen!2sin!4v1717757969854!5m2!1sen!2sin"
+            width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-section">
+      <h3>Company Address</h3>
+      <p>SHILOH SNEHA SECURITY SERVICES PRIVATE LIMITED<br>
+      Guntur, Andhra Pradesh - 522002<br>
+      CIN: U80100AP2025PTC118703</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#aboutus">About Us</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#ourmodels">Our Models</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Connect With Us</h3>
+      <p>Email: <a href="mailto:snehamaggie07@gmail.com">snehamaggie07@gmail.com</a><br>
+            Phone: 96186 86007</p>
+      <p>Follow us on:<br>
+            <a href="#" style="color:#fff;">Facebook</a> |
+            <a href="#" style="color:#fff;">LinkedIn</a> |
+            <a href="#" style="color:#fff;">Twitter</a>
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 SHILOH SNEHA SECURITY SERVICES PRIVATE LIMITED. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function plusSlides(n) {
+      slideIndex += n;
+      showSlides();
+    }
+
+    function showSlides() {
+      const slides = document.querySelectorAll('.slider img');
+      const slider = document.querySelector('.slider');
+      const totalSlides = slides.length;
+
+      if (slideIndex >= totalSlides) {
+        slideIndex = 0; // Loop back to the first slide
+      }
+      if (slideIndex < 0) {
+        slideIndex = totalSlides - 1; // Loop back to the last slide
+      }
+
+      // Calculate the translation needed
+      const offset = -slideIndex * 100; // Each slide is 100% width
+      slider.style.transform = `translateX(${offset}%)`;
+    }
+  </script>
+</body>
+</html>
